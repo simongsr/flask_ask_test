@@ -19,31 +19,32 @@ app = Flask(__name__)
 ask = Ask(app, route='/')
 
 
-@app.route('/test')
-def index__html() -> str:
-    name = request.args.get('name', 'troietta')
-    return """<!DOCTYPE html>
-<html>
-    <body>
-        <h1>Hello, {name}!</h1>
-    </body>
-</html>
-""".format(name=name)
+# @app.route('/test')
+# def index__html() -> str:
+#     name = request.args.get('name', 'troietta')
+#     return """<!DOCTYPE html>
+# <html>
+#     <body>
+#         <h1>Hello, {name}!</h1>
+#     </body>
+# </html>
+# """.format(name=name)
 
 
-@ask.on_session_started
-def new_session() -> None:
-    log.info('new session started')
+# @ask.on_session_started
+# def new_session() -> None:
+#     log.info('new session started')
+#
+#
+# @ask.session_ended
+# def session_ended() -> iter:
+#     return "", 200
 
 
-@ask.session_ended
-def session_ended() -> iter:
-    return "", 200
-
-
-@ask.intent("SayHello", mapping={'name': 'Name'}, default={'Name': 'Troiette'})
-def say_hello(name: str):
-    text = render_template('hello', name=name)
+@ask.intent("SayHello", mapping={'name': 'Name'})
+def say_hello(name: str) -> str:
+    # text = render_template('hello', name=name)
+    text = "Ciao {0}".format(name)
     return statement(text).simple_card('Hello', text)
 
 
