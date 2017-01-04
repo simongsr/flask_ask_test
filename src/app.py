@@ -41,7 +41,7 @@ def session_ended() -> iter:
     return "", 200
 
 
-@ask.intent("SayHello", mapping={'name': 'Name'}, default={'name': 'Troiette'})
+@ask.intent("SayHello", mapping={'name': 'Name'}, default={'Name': 'Troiette'})
 def say_hello(name: str):
     text = render_template('hello', name=name)
     return statement(text).simple_card('Hello', text)
