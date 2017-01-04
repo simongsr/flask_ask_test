@@ -2,6 +2,7 @@
 
 from flask import Flask
 from flask import render_template
+from flask import request
 from flask_ask import Ask
 from flask_ask import statement
 from gunicorn.http.wsgi import log
@@ -20,22 +21,23 @@ ask = Ask(app, route='/')
 
 @app.route('/test')
 def index__html() -> str:
+    name = request.args.get('name', 'troietta')
     return """<!DOCTYPE html>
 <html>
     <body>
-        <h1>Hello, world!</h1>
+        <h1>Hello, {name}!</h1>
     </body>
 </html>
-"""
+""".format(name=name)
 
 
 @ask.on_session_started
-def new_session():
+def new_session() -> None:
     log.info('new session started')
 
 
 @ask.session_ended
-def session_ended():
+def session_ended() -> iter:
     return "", 200
 
 
