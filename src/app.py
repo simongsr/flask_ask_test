@@ -6,6 +6,7 @@ from flask import request
 from flask_ask import Ask
 from flask_ask import statement
 from gunicorn.http.wsgi import log
+import logging
 
 __author__ = 'Simone Pandolfi <simopandolfi@gmail.com>'
 __version__ = (1, 0, 0)
@@ -17,6 +18,8 @@ PORT = 8000       # : int
 
 app = Flask(__name__)
 ask = Ask(app, route='/')
+
+logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 
 # @app.route('/test')
@@ -41,13 +44,40 @@ ask = Ask(app, route='/')
 #     return "", 200
 
 
-@ask.intent(intent_name='SayHello')  #, mapping={'name': 'Name'})
-def say_hello(Name: str = 'Simone') -> str:
-    log.error('In SAY_HELLO')
-    # text = render_template('hello', name=name)
-    text = "Ciao {0}".format(Name)
-    return statement(text)  #.simple_card('Hello', text)
+# @ask.intent(intent_name='SayHello')  #, mapping={'name': 'Name'})
+# def say_hello(Name: str = 'Simone') -> str:
+#     log.error('In SAY_HELLO')
+#     # text = render_template('hello', name=name)
+#     text = "Ciao {0}".format(Name)
+#     return statement(text)  #.simple_card('Hello', text)
+#
+#
+# if __name__ == '__main__':
+#     app.run()  #host=HOST, port=PORT)
+
+
+@ask.launch
+def launch():
+    speech_text = 'Welcome to the Alexa Skills Kit, you can say hello'
+    return question(speech_text).reprompt(speech_text).simple_card('HelloWorld', speech_text)
+
+
+@ask.intent('HelloWorldIntent')
+def hello_world():
+    speech_text = 'Hello world'
+    return statement(speech_text).simple_card('HelloWorld', speech_text)
+
+
+@ask.intent('AMAZON.HelpIntent')
+def help():
+    speech_text = 'You can say hello to me!'
+    return question(speech_text).reprompt(speech_text).simple_card('HelloWorld', speech_text)
+
+
+@ask.session_ended
+def session_ended():
+    return "", 200
 
 
 if __name__ == '__main__':
-    app.run()  #host=HOST, port=PORT)
+    app.run(debug=True)
