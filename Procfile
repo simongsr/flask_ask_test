@@ -1,1 +1,1 @@
-web: gunicorn --workers=4 --logfile - src.wsgi:app
+web: gunicorn --workers=4 --log-file - src.wsgi:app
