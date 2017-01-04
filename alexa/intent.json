@@ -1,11 +1,11 @@
 {
   "intents": [
     {
-      "intent": "SayHello",
+      "intent": "SayHelloIntent",
       "slots": [
         {
-          "name": "Name",
-          "type": "AMAZON.LITERAL"
+          "name": "name",
+          "type": "AMAZON.US_FIRST_NAME"
         }
       ]
     }

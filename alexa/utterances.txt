@@ -1,2 +1,2 @@
-SayHello say hello
-SayHello say hello to {Name}
+SayHelloIntent say hello
+SayHelloIntent say hello to {name}
