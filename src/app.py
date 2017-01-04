@@ -39,7 +39,8 @@ logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 #     return "", 200
 
 
-@ask.intent('SayHelloIntent', mapping={'name': 'name'}, default={'name': 'World'})
+# @ask.intent('SayHelloIntent', mapping={'name': 'name'}, default={'name': 'World'})
+@ask.intent('SayHelloIntent', default={'name': 'World'})
 def say_hello(name):
     text = "Hello, {0}".format(name)
     return statement(text)
