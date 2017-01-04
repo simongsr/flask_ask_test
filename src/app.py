@@ -41,13 +41,13 @@ ask = Ask(app, route='/')
 #     return "", 200
 
 
-@ask.intent("SayHello", mapping={'name': 'Name'})
-def say_hello(name: str) -> str:
-    log.info("In SAY_HELLO")
+@ask.intent('SayHello')  #, mapping={'name': 'Name'})
+def say_hello(Name: str) -> str:
+    log.error('In SAY_HELLO')
     # text = render_template('hello', name=name)
-    text = "Ciao {0}".format(name)
+    text = "Ciao {0}".format(Name)
     return statement(text).simple_card('Hello', text)
 
 
 if __name__ == '__main__':
-    app.run(host=HOST, port=PORT)
+    app.run()  #host=HOST, port=PORT)

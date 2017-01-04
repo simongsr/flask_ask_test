@@ -7,4 +7,4 @@ __version__ = (1, 0, 0)
 
 
 if __name__ == '__main__':
-    app.run(host=HOST, port=PORT)
+    app.run()  #host=HOST, port=PORT)
