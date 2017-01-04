@@ -41,7 +41,7 @@ ask = Ask(app, route='/')
 #     return "", 200
 
 
-@ask.intent('SayHello')  #, mapping={'name': 'Name'})
+@ask.intent(intent_name='SayHello')  #, mapping={'name': 'Name'})
 def say_hello(Name: str) -> str:
     log.error('In SAY_HELLO')
     # text = render_template('hello', name=name)
