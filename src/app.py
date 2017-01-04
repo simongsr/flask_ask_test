@@ -40,7 +40,7 @@ def session_ended():
 
 
 @ask.intent("SayHello", mapping={'name': 'Name'}, default={'name': 'Troiette'})
-def say_hellp(name: str):
+def say_hello(name: str):
     text = render_template('hello', name=name)
     return statement(text).simple_card('Hello', text)
 
