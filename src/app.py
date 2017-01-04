@@ -46,7 +46,7 @@ def say_hello(Name: str = 'Simone') -> str:
     log.error('In SAY_HELLO')
     # text = render_template('hello', name=name)
     text = "Ciao {0}".format(Name)
-    return statement(text).simple_card('Hello', text)
+    return statement(text)  #.simple_card('Hello', text)
 
 
 if __name__ == '__main__':
