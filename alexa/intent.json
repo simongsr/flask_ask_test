@@ -21,6 +21,27 @@
           "type": "AMAZON.US_FIRST_NAME"
         }
       ]
+    },
+    {
+      "intent": "SendMessageIntent"
+    },
+    {
+      "intent": "ApplyAuthorIntent",
+      "slots": [
+        {
+          "name": "Name",
+          "type": "AMAZON.US_FIRST_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "WriteMessageIntent",
+      "slots": [
+        {
+          "name": "Msg",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
     }
   ]
 }

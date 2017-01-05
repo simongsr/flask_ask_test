@@ -6,6 +6,7 @@ from flask import Flask
 from flask_ask import Ask
 from flask_ask import convert_errors
 from flask_ask import question
+from flask_ask import session
 from flask_ask import statement
 
 __author__ = 'Simone Pandolfi <simopandolfi@gmail.com>'
@@ -28,10 +29,8 @@ logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 def help_func():
     """ Messaggio di HELP.
     """
-    speech_text = "Commands list: help, what's up, what's new, " + \
-                  "to write something by user's name"
-    # return statement(speech_text)
-    return question(speech_text).reprompt("E daje")
+    speech_text = "Commands list: help, what's up, what's new, say"
+    return statement(speech_text)
 
 
 @ask.intent('WhatsUpIntent')
@@ -62,6 +61,46 @@ def say(msg, name):
         speech_text = 'Could not understand your name, please try again'
     else:
         speech_text = "{0} writes: {1}".format(name, msg)
+    return statement(speech_text)
+
+
+@ask.intent('SendMessageIntent')
+def send_message():
+    """ Richiede un messaggio da inviare.
+    """
+    session.attributes['is_sending_message'] = True
+    speech_text                              = "What do you want to write?"
+    reprompt_speech_text                     = "I didn't get that! " + \
+                                               "What will be the text " + \
+                                               "of the message?"
+    return question(speech_text).reprompt(reprompt_speech_text)
+
+
+@ask.intent('WriteMesssageIntent', mapping={'msg': 'Msg'})
+def write_message(msg):
+    if not session.attributes.get('is_sending_message', False):
+        speech_text = "I'm sorry, I misunderstood what you said!"
+        return statement(speech_text)
+    session.attributes['is_text_received'] = True
+    session.attributes['msg']              = msg
+    speech_text                            = "Would you sign it?"
+    reprompt_speech_text                   = "I didn't get that! " + \
+                                             "Who are you bitch?"
+    return question(speech_text).reprompt(reprompt_speech_text)
+
+
+@ask.intent('ApplyAuthorIntent', mapping={'name': 'Name'})
+def apply_author(name):
+    if not session.attributes.get('is_sending_message', False):
+        speech_text = "I'm sorry, I misunderstood what you said!"
+        return statement(speech_text)
+    if not session.attributes.get('is_text_received', False):
+        speech_text = "I'm sorry, I misunderstood what you said!"
+        return statement(speech_text)
+    msg = session.attributes['msg']
+    # TODO invia il messaggio
+    # speech_text = "Message sent!"
+    speech_text = '{0} said {1}'.format(name, msg)
     return statement(speech_text)
 
 

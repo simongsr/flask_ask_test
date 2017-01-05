@@ -5,3 +5,9 @@ WhatsUpIntent what's up
 WhatsNewIntent what's new
 
 SayIntent say {scrivi qualcosa|Msg} by {Name}
+
+SendMessageIntent to send a message
+
+ApplyAuthor {Name}
+
+WriteMessageIntent {il messaggio|Msg}
