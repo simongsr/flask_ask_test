@@ -18,13 +18,13 @@ logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 
 # @ask.intent('SayHelloIntent', default={'name': 'World'})
-# def say_hello(name) -> statement:
+# def say_hello(name):
 #     text = "Hello, {0}".format(name)
 #     return statement(text)
 
 
 @ask.intent('HelpIntent')
-def help_func() -> statement:
+def help_func():
     """ Messaggio di HELP.
     """
     speech_text = "Commands list: help, what's up, what's new, " + \
@@ -32,22 +32,22 @@ def help_func() -> statement:
     return statement(speech_text)
 
 
-@ask.intent('WhatsUpIntent')
-def whats_up() -> statement:
-    """ Aggiornamente sullo stato della produzione.
-    """
-    speech_text = "Stato della produzione"
-    return statement(speech_text)
-
-
-@ask.intent('WhatsNewIntent')
-def whats_new() -> statement:
-    """ Gli ultimi messaggi inviati nella chat.
-    """
-    # TODO inserire una logica di persistenza per ricordare il timestamp
-    #      dell'ultimo messaggio letto
-    speech_text = "Ultimi messaggi"
-    return statement(speech_text)
+# @ask.intent('WhatsUpIntent')
+# def whats_up() -> statement:
+#     """ Aggiornamente sullo stato della produzione.
+#     """
+#     speech_text = "Stato della produzione"
+#     return statement(speech_text)
+#
+#
+# @ask.intent('WhatsNewIntent')
+# def whats_new() -> statement:
+#     """ Gli ultimi messaggi inviati nella chat.
+#     """
+#     # TODO inserire una logica di persistenza per ricordare il timestamp
+#     #      dell'ultimo messaggio letto
+#     speech_text = "Ultimi messaggi"
+#     return statement(speech_text)
 
 
 # @ask.intent('WriteIntent', mapping={'msg': 'Msg', 'name': 'Name'})
