@@ -24,7 +24,7 @@ logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 
 @ask.intent('HelpIntent')
-def help_func() -> statement:
+def help_func():
     """ Messaggio di HELP.
     """
     speech_text = "Commands list: help, what's up, what's new, " + \
