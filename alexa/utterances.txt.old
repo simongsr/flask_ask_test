@@ -1,0 +1,2 @@
+SayHelloIntent say hello
+SayHelloIntent say hello to {name}

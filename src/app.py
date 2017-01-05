@@ -4,8 +4,8 @@ import logging
 
 from flask import Flask
 from flask_ask import Ask
+from flask_ask import convert_errors
 from flask_ask import statement
-from gunicorn.http.wsgi import log
 
 __author__ = 'Simone Pandolfi <simopandolfi@gmail.com>'
 __version__ = (1, 0, 0)
@@ -17,33 +17,50 @@ ask = Ask(app, route='/')
 logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 
 
-# @app.route('/test')
-# def index__html() -> str:
-#     name = request.args.get('name', 'troietta')
-#     return """<!DOCTYPE html>
-# <html>
-#     <body>
-#         <h1>Hello, {name}!</h1>
-#     </body>
-# </html>
-# """.format(name=name)
+# @ask.intent('SayHelloIntent', default={'name': 'World'})
+# def say_hello(name) -> statement:
+#     text = "Hello, {0}".format(name)
+#     return statement(text)
 
 
-# @ask.on_session_started
-# def new_session() -> None:
-#     log.info('new session started')
-#
-#
-# @ask.session_ended
-# def session_ended() -> iter:
-#     return "", 200
+@ask.intent('HelpIntent')
+def help() -> statement:
+    """ Messaggio di HELP.
+    """
+    speech_text = "Commands list: help, what's up, what's new, " + \
+                  "to write something by user's name"
+    return statement(speech_text)
 
 
-# @ask.intent('SayHelloIntent', mapping={'name': 'name'}, default={'name': 'World'})
-@ask.intent('SayHelloIntent', default={'name': 'World'})
-def say_hello(name):
-    text = "Hello, {0}".format(name)
-    return statement(text)
+@ask.intent('WhatsUpIntent')
+def whats_up() -> statement:
+    """ Aggiornamente sullo stato della produzione.
+    """
+    speech_text = "Stato della produzione"
+    return statement(speech_text)
+
+
+@ask.intent('WhatsNewIntent')
+def whats_new() -> statement:
+    """ Gli ultimi messaggi inviati nella chat.
+    """
+    # TODO inserire una logica di persistenza per ricordare il timestamp
+    #      dell'ultimo messaggio letto
+    speech_text = "Ultimi messaggi"
+    return statement(speech_text)
+
+
+@ask.intent('WriteIntent', mapping={'msg': 'Msg', 'name': 'Name'})
+def write(msg: str, name: str) -> statement:
+    """ Scrive un messaggio nella chat..
+    """
+    if 'msg' in convert_errors:
+        speech_text = 'Could not understand message, please try again'
+    elif 'name' in convert_errors:
+        speech_text = 'Could not understand your name, please try again'
+    else:
+        speech_text = "{0} writes: {1}".format(name, msg)
+    return statement(speech_text)
 
 
 if __name__ == '__main__':

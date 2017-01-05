@@ -1,2 +1,7 @@
-SayHelloIntent say hello
-SayHelloIntent say hello to {name}
+HelpIntent help
+
+WhatsUpIntent what's up
+
+WhatsNewIntent what's new
+
+WriteIntent to write {something|Msg} by {Name}

@@ -1,0 +1,13 @@
+{
+  "intents": [
+    {
+      "intent": "SayHelloIntent",
+      "slots": [
+        {
+          "name": "name",
+          "type": "AMAZON.LITERAL"
+        }
+      ]
+    }
+  ]
+}

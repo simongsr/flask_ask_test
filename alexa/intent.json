@@ -1,10 +1,23 @@
 {
   "intents": [
     {
-      "intent": "SayHelloIntent",
+      "intent": "HelpIntent"
+    },
+    {
+      "intent": "WhatsUpIntent"
+    },
+    {
+      "intent": "WhatsNewIntent"
+    },
+    {
+      "intent": "WriteIntent",
       "slots": [
         {
-          "name": "name",
+          "name": "Msg",
+          "type": "AMAZON.LITERAL"
+        },
+        {
+          "name": "Name",
           "type": "AMAZON.US_FIRST_NAME"
         }
       ]

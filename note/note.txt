@@ -1,0 +1,6 @@
+Alexa, ask Keethings help                       ->  stampa la lista dei comandi
+Alexa, ask Keethings what's up                  ->  stampa lo stato della sezione corrente
+Alexa, ask Keethings what's new                 ->  stampa i messaggi "nuovi"
+// Alexa, ask Keethings to move to home            ->  ritorna alla sezione iniziale
+// Alexa, ask Keethings to move to {Section}       ->  si sposta in una sezione (es.: amministrazione, produzione, etc) se abilitata - [Section: CUSTOM SLOT TYPE]
+Alexa, ask Keethings to write {Msg} by {Name}   ->  scrive un messaggio sul gruppo della produzione - [Name: AMAZON.US_FIRST_NAME, Msg: Amazon.LITERAL]
