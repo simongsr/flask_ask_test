@@ -104,5 +104,15 @@ def apply_author(name):
     return statement(speech_text)
 
 
+@ask.intent("SayHelloIntent", mapping={'name': 'Name'})
+def say_hello(name):
+    speech_text = 'Ciao {0}'.format(name)
+    if name == 'Fabio':
+        speech_text = 'Javascript sucks!'
+    elif name == 'Costin':
+        speech_text = 'Bella zio!'
+    return statement(speech_text)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

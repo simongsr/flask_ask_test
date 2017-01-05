@@ -42,6 +42,15 @@
           "type": "AMAZON.LITERAL"
         }
       ]
+    },
+    {
+      "intent": "SayHelloIntent",
+      "slots": [
+        {
+          "name": "Name",
+          "type": "AMAZON.US_FIRST_NAME"
+        }
+      ]
     }
   ]
 }
