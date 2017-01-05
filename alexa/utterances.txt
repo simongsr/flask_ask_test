@@ -4,4 +4,4 @@ WhatsUpIntent what's up
 
 WhatsNewIntent what's new
 
-SayIntent say {something|Msg} by {Name}
+SayIntent say {scrivi qualcosa|Msg} by {Name}

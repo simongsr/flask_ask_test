@@ -5,6 +5,7 @@ import logging
 from flask import Flask
 from flask_ask import Ask
 from flask_ask import convert_errors
+from flask_ask import question
 from flask_ask import statement
 
 __author__ = 'Simone Pandolfi <simopandolfi@gmail.com>'
@@ -29,7 +30,8 @@ def help_func():
     """
     speech_text = "Commands list: help, what's up, what's new, " + \
                   "to write something by user's name"
-    return statement(speech_text)
+    # return statement(speech_text)
+    return question(speech_text).reprompt("E daje")
 
 
 @ask.intent('WhatsUpIntent')
