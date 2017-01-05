@@ -32,35 +32,35 @@ def help_func():
     return statement(speech_text)
 
 
-# @ask.intent('WhatsUpIntent')
-# def whats_up() -> statement:
-#     """ Aggiornamente sullo stato della produzione.
-#     """
-#     speech_text = "Stato della produzione"
-#     return statement(speech_text)
-#
-#
-# @ask.intent('WhatsNewIntent')
-# def whats_new() -> statement:
-#     """ Gli ultimi messaggi inviati nella chat.
-#     """
-#     # TODO inserire una logica di persistenza per ricordare il timestamp
-#     #      dell'ultimo messaggio letto
-#     speech_text = "Ultimi messaggi"
-#     return statement(speech_text)
+@ask.intent('WhatsUpIntent')
+def whats_up():
+    """ Aggiornamente sullo stato della produzione.
+    """
+    speech_text = "Stato della produzione"
+    return statement(speech_text)
 
 
-# @ask.intent('WriteIntent', mapping={'msg': 'Msg', 'name': 'Name'})
-# def write(msg: str, name: str) -> statement:
-#     """ Scrive un messaggio nella chat..
-#     """
-#     if 'msg' in convert_errors:
-#         speech_text = 'Could not understand message, please try again'
-#     elif 'name' in convert_errors:
-#         speech_text = 'Could not understand your name, please try again'
-#     else:
-#         speech_text = "{0} writes: {1}".format(name, msg)
-#     return statement(speech_text)
+@ask.intent('WhatsNewIntent')
+def whats_new():
+    """ Gli ultimi messaggi inviati nella chat.
+    """
+    # TODO inserire una logica di persistenza per ricordare il timestamp
+    #      dell'ultimo messaggio letto
+    speech_text = "Ultimi messaggi"
+    return statement(speech_text)
+
+
+@ask.intent('WriteIntent', mapping={'msg': 'Msg', 'name': 'Name'})
+def write(msg, name):
+    """ Scrive un messaggio nella chat..
+    """
+    if 'msg' in convert_errors:
+        speech_text = 'Could not understand message, please try again'
+    elif 'name' in convert_errors:
+        speech_text = 'Could not understand your name, please try again'
+    else:
+        speech_text = "{0} writes: {1}".format(name, msg)
+    return statement(speech_text)
 
 
 if __name__ == '__main__':
