@@ -107,11 +107,12 @@ def apply_author(name):
 @ask.intent("SayHelloIntent", mapping={'name': 'Name'})
 def say_hello(name):
     speech_text = 'Ciao {0}'.format(name)
-    if name == 'Fabio':
+    name = name.lower()
+    if name == 'fabio':
         speech_text = 'Javascript sucks!'
-    elif name == 'Costin':
+    elif name == 'costin':
         speech_text = 'Bella zio!'
-    elif name == 'Simone':
+    elif name == 'simone':
         speech_text = 'Ciao troietta!'
     return statement(speech_text)
 
