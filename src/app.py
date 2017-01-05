@@ -50,9 +50,9 @@ def whats_new():
     return statement(speech_text)
 
 
-@ask.intent('WriteIntent', mapping={'msg': 'Msg', 'name': 'Name'})
-def write(msg, name):
-    """ Scrive un messaggio nella chat..
+@ask.intent('SayIntent', mapping={'msg': 'Msg', 'name': 'Name'})
+def say(msg, name):
+    """ Scrive un messaggio nella chat.
     """
     if 'msg' in convert_errors:
         speech_text = 'Could not understand message, please try again'

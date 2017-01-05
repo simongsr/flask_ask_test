@@ -4,4 +4,4 @@ WhatsUpIntent what's up
 
 WhatsNewIntent what's new
 
-WriteIntent to write {something|Msg} by {Name}
+SayIntent say {something|Msg} by {Name}
