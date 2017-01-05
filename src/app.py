@@ -50,17 +50,17 @@ def whats_new() -> statement:
     return statement(speech_text)
 
 
-@ask.intent('WriteIntent', mapping={'msg': 'Msg', 'name': 'Name'})
-def write(msg: str, name: str) -> statement:
-    """ Scrive un messaggio nella chat..
-    """
-    if 'msg' in convert_errors:
-        speech_text = 'Could not understand message, please try again'
-    elif 'name' in convert_errors:
-        speech_text = 'Could not understand your name, please try again'
-    else:
-        speech_text = "{0} writes: {1}".format(name, msg)
-    return statement(speech_text)
+# @ask.intent('WriteIntent', mapping={'msg': 'Msg', 'name': 'Name'})
+# def write(msg: str, name: str) -> statement:
+#     """ Scrive un messaggio nella chat..
+#     """
+#     if 'msg' in convert_errors:
+#         speech_text = 'Could not understand message, please try again'
+#     elif 'name' in convert_errors:
+#         speech_text = 'Could not understand your name, please try again'
+#     else:
+#         speech_text = "{0} writes: {1}".format(name, msg)
+#     return statement(speech_text)
 
 
 if __name__ == '__main__':
