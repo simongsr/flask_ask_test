@@ -111,6 +111,8 @@ def say_hello(name):
         speech_text = 'Javascript sucks!'
     elif name == 'Costin':
         speech_text = 'Bella zio!'
+    elif name == 'Simone':
+        speech_text = 'Ciao troietta!'
     return statement(speech_text)
 
 
