@@ -8,8 +8,8 @@ SayIntent say {scrivi qualcosa|Msg} by {Name}
 
 SendMessageIntent to send a message
 
-ApplyAuthorIntent {Name}
+ApplyAuthorIntent my name is {Name}
 
-WriteMessageIntent {il messaggio|Msg}
+WriteMessageIntent my message is {il messaggio|Msg}
 
 SayHelloIntent to say hello to {Name}

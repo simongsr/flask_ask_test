@@ -76,7 +76,7 @@ def send_message():
     return question(speech_text).reprompt(reprompt_speech_text)
 
 
-@ask.intent('WriteMesssageIntent', mapping={'msg': 'Msg'})
+@ask.intent('WriteMessageIntent', mapping={'msg': 'Msg'})
 def write_message(msg):
     if not session.attributes.get('is_sending_message', False):
         speech_text = "I'm sorry, I misunderstood what you said!"
@@ -108,7 +108,7 @@ def apply_author(name):
 def say_hello(name):
     speech_text = 'Ciao {0}'.format(name)
     name = name.lower()
-    if name == 'fabio':
+    if   name == 'fabio':
         speech_text = 'Javascript sucks!'
     elif name == 'costin':
         speech_text = 'Bella zio!'
